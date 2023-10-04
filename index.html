@@ -73,9 +73,9 @@
                             if (flippedCards.includes(flippedCards[0]) && flippedCards.includes(flippedCards[1])) {
                                 flippedCards[0].classList.add('matched');
                                 flippedCards[1].classList.add('matched');
+                                flippedCards = [];
                             }
                         }, 3000);
-                        flippedCards = [];
                     } else {
                         setTimeout(function() {
                             flippedCards[0].classList.remove('flipped');
