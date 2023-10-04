@@ -32,6 +32,16 @@
         .card.matched {
             visibility: hidden;
         }
+        @keyframes bounce {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(0); }
+            75% { transform: translateX(10px); }
+            100% { transform: translateX(0); }
+        }
+        .card.bounce {
+            animation: bounce 1s linear;
+        }
     </style>
 </head>
 <body>
