@@ -60,7 +60,7 @@
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
-            card.addEventListener('click', function() {
+            function flipCard() {
                 this.classList.add('flipped');
                 flippedCards.push(this);
                 if (flippedCards.length === 2) {
@@ -76,7 +76,8 @@
                         }, 1000);
                     }
                 }
-            });
+            }
+            card.addEventListener('click', flipCard);
             gameBoard.appendChild(card);
         }
     </script>
