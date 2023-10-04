@@ -108,7 +108,7 @@
         function hideMatchedCards() {
             const matchedCards = document.querySelectorAll('.card.matched');
             matchedCards.forEach(card => {
-                card.dataset.emoji = '';
+                card.style.visibility = 'hidden';
             });
         }
 
