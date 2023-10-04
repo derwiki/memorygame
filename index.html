@@ -111,6 +111,7 @@
                 const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
                 const cards = document.querySelectorAll('.card');
                 cards.forEach(card => {
+                    card.style.visibility = 'visible';
                     card.dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
                     card.classList.add('flipped');
                 });
