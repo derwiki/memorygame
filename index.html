@@ -109,7 +109,7 @@
         function celebrate() {
             setTimeout(function() {
                 const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
-                const cards = document.querySelectorAll('.card:not(.matched)');
+                const cards = document.querySelectorAll('.card');
                 cards.forEach(card => {
                     card.dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
                     card.classList.add('flipped');
