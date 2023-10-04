@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* CSS for the grid layout and cards */
+        table {
+            margin: auto;
+            margin-top: 50px;
+        }
+        td {
+            width: 100px;
+            height: 100px;
+        }
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: 2em;
+        }
+    </style>
+    <script>
+        // JavaScript for the game logic
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set of emojis for the cards
+            var emojis = ['😀', '😀', '😃', '😃', '😄', '😄', '😁', '😁', '😆', '🃏'];
+            // Shuffle the emojis
+            emojis.sort(function() { return 0.5 - Math.random() });
+            // Assign the emojis to the cards
+            var buttons = document.querySelectorAll('button');
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].dataset.emoji = emojis[i];
+                buttons[i].addEventListener('click', flipCard);
+            }
+            // Function to flip a card
+            function flipCard() {
+                this.textContent = this.dataset.emoji;
+                // Check for a match
+                var flippedCards = document.querySelectorAll('button:not([data-matched])');
+                if (flippedCards.length === 2) {
+                    if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+                        // Match found
+                        flippedCards[0].dataset.matched = 'true';
+                        flippedCards[1].dataset.matched = 'true';
+                    } else {
+                        // No match, flip the cards back over
+                        setTimeout(function() {
+                            flippedCards[0].textContent = '';
+                            flippedCards[1].textContent = '';
+                        }, 1000);
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <!-- 3x3 grid of cards -->
+        <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+        </tr>
+        <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+        </tr>
+        <tr>
+            <td><button></button></td>
+            <td><button></button></td>
+            <td><button></button></td>
+        </tr>
+    </table>
+</body>
+</html>
