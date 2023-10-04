@@ -87,8 +87,43 @@
                                 flippedCards[0].dataset.emoji = '';
                                 flippedCards[1].dataset.emoji = '';
                                 flippedCards = [];
+                                checkWin();
                             }
                         }, 3000);
+
+        // Function to check if the game is won
+        function checkWin() {
+            const cards = document.querySelectorAll('.card');
+            if ([...cards].every(card => card.classList.contains('matched') || card.dataset.emoji === '🃏')) {
+                celebrate();
+            }
+        }
+
+        // Function to start the celebration animation
+        function celebrate() {
+            const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
+            let intervalId = setInterval(function() {
+                const cards = document.querySelectorAll('.card:not(.matched)');
+                if (cards.length) {
+                    const randomIndex = Math.floor(Math.random() * cards.length);
+                    cards[randomIndex].dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+                    cards[randomIndex].classList.add('flipped');
+                } else {
+                    clearInterval(intervalId);
+                    setTimeout(resetGame, 3000);
+                }
+            }, 250);
+        }
+
+        // Function to reset the game
+        function resetGame() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.classList.remove('flipped', 'matched');
+                card.dataset.emoji = '';
+            });
+            startGame();
+        }
                     } else {
                         setTimeout(function() {
                             flippedCards[0].classList.remove('flipped');
