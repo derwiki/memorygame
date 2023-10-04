@@ -95,14 +95,14 @@
                     const audio = new Audio('clapping.mp3');
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
                         audio.play();
-                        audio.onended = hideMatchedCards;
-                        if (flippedCards.includes(flippedCards[0]) && flippedCards.includes(flippedCards[1])) {
-                            flippedCards[0].classList.add('matched');
-                            flippedCards[1].classList.add('matched');
+                        audio.onended = function() {
+                            hideMatchedCards();
                             flippedCards = [];
                             isProcessing = false;
                             checkWin();
                         }
+                        flippedCards[0].classList.add('matched');
+                        flippedCards[1].classList.add('matched');
 
         // Function to hide matched cards
         function hideMatchedCards() {
