@@ -107,16 +107,16 @@
 
         // Function to start the celebration animation
         function celebrate() {
-            setTimeout(function() {
-                const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
-                const cards = document.querySelectorAll('.card');
-                cards.forEach(card => {
+            const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
                     card.style.visibility = 'visible';
                     card.dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
                     card.classList.add('flipped');
-                });
-                setTimeout(resetGame, 1000);
-            }, 1000);
+                }, index * 250);
+            });
+            setTimeout(resetGame, cards.length * 250 + 1000);
         }
 
         // Function to reset the game
