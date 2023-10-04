@@ -94,7 +94,13 @@
         // Function to check if the game is won
         function checkWin() {
             const cards = document.querySelectorAll('.card');
-            if ([...cards].every(card => card.classList.contains('matched') || card.dataset.emoji === '🃏')) {
+            if (flippedCards.length === 2 && flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+                setTimeout(function() {
+                    if ([...cards].every(card => card.classList.contains('matched') || card.dataset.emoji === '🃏')) {
+                        celebrate();
+                    }
+                }, 3000);
+            } else if ([...cards].every(card => card.classList.contains('matched') || card.dataset.emoji === '🃏')) {
                 celebrate();
             }
         }
