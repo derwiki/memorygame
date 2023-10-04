@@ -41,11 +41,11 @@
 
     <script>
         // Define an array of 4 pairs of emojis and a joker
-        const emojis = ['🐻', '🐻', '🐢', '🐢', '🦁', '🦁', '🐰', '🐰', '🦜', '🦜', '🐠', '🐠', '🐘', '🐘', '🦒', '🦒', '🐸', '🐸'];
+        const emojis = ['🐻', '🐻', '🐢', '🐢', '🦁', '🦁', '🐰', '🐰', '🃏'];
 
         // Function to shuffle array, ensuring that the joker is always at the end
         function shuffle(array) {
-            let currentIndex = array.length - 1, temporaryValue, randomIndex;
+            let currentIndex = array.length - 2, temporaryValue, randomIndex;
             while (0 !== currentIndex) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex -= 1;
