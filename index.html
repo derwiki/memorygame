@@ -99,7 +99,7 @@
                     if ([...cards].every(card => card.classList.contains('matched') || card.dataset.emoji === '🃏')) {
                         celebrate();
                     }
-                }, 3000);
+                }, 1000);
             } else if ([...cards].every(card => card.classList.contains('matched') || card.dataset.emoji === '🃏')) {
                 celebrate();
             }
@@ -114,8 +114,8 @@
                     card.dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
                     card.classList.add('flipped');
                 });
-                setTimeout(resetGame, 3000);
-            }, 3000);
+                setTimeout(resetGame, 1000);
+            }, 1000);
         }
 
         // Function to reset the game
