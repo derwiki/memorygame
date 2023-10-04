@@ -41,11 +41,18 @@
                         // Match found
                         flippedCards[0].dataset.matched = 'true';
                         flippedCards[1].dataset.matched = 'true';
+                        // Play applause sound
+                        var audio = new Audio('applause.wav');
+                        audio.play();
                     } else {
-                        // No match, flip the cards back over
+                        // No match, shake the cards and flip them back over
+                        flippedCards[0].classList.add('shake');
+                        flippedCards[1].classList.add('shake');
                         setTimeout(function() {
                             flippedCards[0].textContent = '';
                             flippedCards[1].textContent = '';
+                            flippedCards[0].classList.remove('shake');
+                            flippedCards[1].classList.remove('shake');
                         }, 1000);
                     }
                 }
