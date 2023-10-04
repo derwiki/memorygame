@@ -14,8 +14,8 @@
         }
         #game-board {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
             gap: 10px;
             width: 100vw;
             height: 100vh;
@@ -23,8 +23,8 @@
             align-items: center;
         }
         .card {
-            width: 300px;
-            height: 300px;
+            width: 30vw;
+            height: 30vh;
             background: #ccc;
             display: flex;
             justify-content: center;
