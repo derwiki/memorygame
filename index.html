@@ -33,11 +33,12 @@
             }
             // Function to flip a card
             function flipCard() {
-                this.textContent = this.dataset.emoji;
                 var flippedCards = document.querySelectorAll('button:not([data-matched])');
-                if (flippedCards.length > 2) {
+                if (flippedCards.length >= 2) {
                     return;
                 }
+                this.textContent = this.dataset.emoji;
+                flippedCards = document.querySelectorAll('button:not([data-matched])');
                 if (flippedCards.length === 2) {
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
                         // Match found
