@@ -102,12 +102,14 @@
         // Function to start the celebration animation
         function celebrate() {
             const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
+            const cards = document.querySelectorAll('.card:not(.matched)');
+            const shuffledIndexes = shuffle([...Array(cards.length).keys()]);
+            let i = 0;
             let intervalId = setInterval(function() {
-                const cards = document.querySelectorAll('.card:not(.matched)');
-                if (cards.length) {
-                    const randomIndex = Math.floor(Math.random() * cards.length);
-                    cards[randomIndex].dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
-                    cards[randomIndex].classList.add('flipped');
+                if (i < shuffledIndexes.length) {
+                    cards[shuffledIndexes[i]].dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+                    cards[shuffledIndexes[i]].classList.add('flipped');
+                    i++;
                 } else {
                     clearInterval(intervalId);
                     setTimeout(resetGame, 3000);
