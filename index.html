@@ -130,6 +130,8 @@
         function celebrate() {
             const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
             const cards = document.querySelectorAll('.card');
+            const audio = new Audio('mixkit-animated-small-group-applause-523.wav');
+            audio.play();
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.style.visibility = 'visible';
@@ -137,7 +139,9 @@
                     card.classList.add('flipped');
                 }, index * 250);
             });
-            setTimeout(resetGame, cards.length * 250 + 1000);
+            audio.onended = function() {
+                resetGame();
+            };
         }
 
         // Function to reset the game
