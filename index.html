@@ -22,11 +22,14 @@
             align-items: center;
             font-size: 2em;
         }
-        .card.flipped {
+        .card.flipped, .card.matched {
             background: #fff;
         }
-        .card.flipped::before {
+        .card.flipped::before, .card.matched::before {
             content: attr(data-emoji);
+        }
+        .card.matched {
+            visibility: hidden;
         }
     </style>
 </head>
@@ -65,8 +68,8 @@
                 flippedCards.push(this);
                 if (flippedCards.length === 2) {
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
-                        flippedCards[0].removeEventListener('click', flipCard);
-                        flippedCards[1].removeEventListener('click', flipCard);
+                        flippedCards[0].classList.add('matched');
+                        flippedCards[1].classList.add('matched');
                         flippedCards = [];
                     } else {
                         setTimeout(function() {
