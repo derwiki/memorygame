@@ -97,12 +97,12 @@
                         flippedCards[0].classList.add('matched');
                         flippedCards[1].classList.add('matched');
                         audio.play();
-                        audio.onended = function() {
+                        setTimeout(function() {
                             hideMatchedCards();
                             flippedCards = [];
                             isProcessing = false;
                             checkWin();
-                        }
+                        }, 3000);
 
         // Function to hide matched cards
         function hideMatchedCards() {
