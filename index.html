@@ -22,6 +22,12 @@
             align-items: center;
             font-size: 2em;
         }
+        .card.flipped {
+            background: #fff;
+        }
+        .card.flipped::before {
+            content: attr(data-emoji);
+        }
     </style>
 </head>
 <body>
@@ -46,17 +52,18 @@
             return array;
         }
 
-        // Populate the game board with shuffled emojis
+        // Populate the game board with shuffled emojis and add event listeners
         const gameBoard = document.getElementById('game-board');
         const shuffledEmojis = shuffle(emojis);
         for (let i = 0; i < 9; i++) {
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
             gameBoard.appendChild(card);
         }
-
-        // Game logic will be implemented here
     </script>
 </body>
 </html>
