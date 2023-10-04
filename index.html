@@ -96,14 +96,12 @@
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
                         audio.play();
                         audio.onended = function() {
-                            setTimeout(function() {
-                                flippedCards[0].classList.add('matched');
-                                flippedCards[1].classList.add('matched');
-                                hideMatchedCards();
-                                flippedCards = [];
-                                isProcessing = false;
-                                checkWin();
-                            }, 3000);
+                            flippedCards[0].classList.add('matched');
+                            flippedCards[1].classList.add('matched');
+                            hideMatchedCards();
+                            flippedCards = [];
+                            isProcessing = false;
+                            checkWin();
                         };
 
         // Function to hide matched cards
