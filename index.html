@@ -34,9 +34,9 @@
         }
         @keyframes bounce {
             0% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
+            25% { transform: translateX(-5px); }
             50% { transform: translateX(0); }
-            75% { transform: translateX(10px); }
+            75% { transform: translateX(5px); }
             100% { transform: translateX(0); }
         }
         .card.bounce {
@@ -170,9 +170,11 @@
         // Start the game when the page loads
         window.onload = startGame;
                     } else {
+                        flippedCards[0].classList.add('bounce');
+                        flippedCards[1].classList.add('bounce');
                         setTimeout(function() {
-                            flippedCards[0].classList.remove('flipped');
-                            flippedCards[1].classList.remove('flipped');
+                            flippedCards[0].classList.remove('flipped', 'bounce');
+                            flippedCards[1].classList.remove('flipped', 'bounce');
                             flippedCards = [];
                         }, 1000);
                     }
