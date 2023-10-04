@@ -31,13 +31,15 @@
                 buttons[i].dataset.emoji = emojis[i];
                 buttons[i].addEventListener('click', flipCard);
             }
+            // Variable to keep track of the number of flipped cards
+            var flippedCount = 0;
             // Function to flip a card
             function flipCard() {
-                this.textContent = this.dataset.emoji;
-                var flippedCards = document.querySelectorAll('button:not([data-matched])');
-                if (flippedCards.length > 2) {
-                    return;
+                if (flippedCount < 2) {
+                    this.textContent = this.dataset.emoji;
+                    flippedCount++;
                 }
+                var flippedCards = document.querySelectorAll('button:not([data-matched])');
                 if (flippedCards.length === 2) {
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
                         // Match found
@@ -46,6 +48,7 @@
                         // Play applause sound
                         var audio = new Audio('applause.wav');
                         audio.play();
+                        flippedCount = 0;
                     } else {
                         // No match, shake the cards and flip them back over
                         flippedCards[0].classList.add('shake');
@@ -55,6 +58,7 @@
                             flippedCards[1].textContent = '';
                             flippedCards[0].classList.remove('shake');
                             flippedCards[1].classList.remove('shake');
+                            flippedCount = 0;
                         }, 1000);
                     }
                 }
