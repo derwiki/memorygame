@@ -40,12 +40,12 @@
     </div>
 
     <script>
-        // Define an array of 4 pairs of emojis and a joker
-        const emojis = ['🐻', '🐻', '🐢', '🐢', '🦁', '🦁', '🐰', '🐰', '🃏'];
+        // Define an array of 9 unique emojis
+        const emojis = ['🐻', '🐢', '🦁', '🐰', '🐼', '🐨', '🐯', '🦊', '🐸'];
 
-        // Function to shuffle array, ensuring that the joker is always at the end
+        // Function to shuffle array
         function shuffle(array) {
-            let currentIndex = array.length - 2, temporaryValue, randomIndex;
+            let currentIndex = array.length, temporaryValue, randomIndex;
             while (0 !== currentIndex) {
                 randomIndex = Math.floor(Math.random() * currentIndex);
                 currentIndex -= 1;
@@ -56,9 +56,19 @@
             return array;
         }
 
+        // Randomly select 4 emojis from the emojis array and duplicate them
+        const selectedEmojis = [];
+        for (let i = 0; i < 4; i++) {
+            const randomIndex = Math.floor(Math.random() * emojis.length);
+            selectedEmojis.push(emojis[randomIndex], emojis[randomIndex]);
+        }
+
+        // Add the joker to the selected emojis
+        selectedEmojis.push('🃏');
+
         // Populate the game board with shuffled emojis and add event listeners
         const gameBoard = document.getElementById('game-board');
-        const shuffledEmojis = shuffle(emojis);
+        const shuffledEmojis = shuffle(selectedEmojis);
         let flippedCards = [];
         for (let i = 0; i < 9; i++) {
             const card = document.createElement('div');
