@@ -92,18 +92,18 @@
                 flippedCards.push(this);
                 if (flippedCards.length === 2) {
                     isProcessing = true;
+                    const audio = new Audio('clapping.mp3');
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
-                        setTimeout(function() {
-                            if (flippedCards.includes(flippedCards[0]) && flippedCards.includes(flippedCards[1])) {
-                                flippedCards[0].classList.add('matched');
-                                flippedCards[1].classList.add('matched');
-                                flippedCards[0].dataset.emoji = '';
-                                flippedCards[1].dataset.emoji = '';
-                                flippedCards = [];
-                                isProcessing = false;
-                                checkWin();
-                            }
-                        }, 1000);
+                        audio.play();
+                        if (flippedCards.includes(flippedCards[0]) && flippedCards.includes(flippedCards[1])) {
+                            flippedCards[0].classList.add('matched');
+                            flippedCards[1].classList.add('matched');
+                            flippedCards[0].dataset.emoji = '';
+                            flippedCards[1].dataset.emoji = '';
+                            flippedCards = [];
+                            isProcessing = false;
+                            checkWin();
+                        }
 
         // Function to check if the game is won
         function checkWin() {
