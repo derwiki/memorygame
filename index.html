@@ -55,12 +55,27 @@
         // Populate the game board with shuffled emojis and add event listeners
         const gameBoard = document.getElementById('game-board');
         const shuffledEmojis = shuffle(emojis);
+        let flippedCards = [];
         for (let i = 0; i < 9; i++) {
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
             card.addEventListener('click', function() {
-                this.classList.toggle('flipped');
+                this.classList.add('flipped');
+                flippedCards.push(this);
+                if (flippedCards.length === 2) {
+                    if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+                        flippedCards[0].removeEventListener('click', flipCard);
+                        flippedCards[1].removeEventListener('click', flipCard);
+                        flippedCards = [];
+                    } else {
+                        setTimeout(function() {
+                            flippedCards[0].classList.remove('flipped');
+                            flippedCards[1].classList.remove('flipped');
+                            flippedCards = [];
+                        }, 1000);
+                    }
+                }
             });
             gameBoard.appendChild(card);
         }
