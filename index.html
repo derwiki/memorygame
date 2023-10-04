@@ -94,11 +94,11 @@
                     isProcessing = true;
                     const audio = new Audio('clapping.mp3');
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
-                        flippedCards[0].classList.add('matched');
-                        flippedCards[1].classList.add('matched');
                         audio.play();
                         audio.onended = function() {
                             setTimeout(function() {
+                                flippedCards[0].classList.add('matched');
+                                flippedCards[1].classList.add('matched');
                                 hideMatchedCards();
                                 flippedCards = [];
                                 isProcessing = false;
