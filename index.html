@@ -56,11 +56,12 @@
             return array;
         }
 
-        // Randomly select 4 emojis from the emojis array and duplicate them
+        // Randomly select 4 unique emojis from the emojis array and duplicate them
         const selectedEmojis = [];
         for (let i = 0; i < 4; i++) {
             const randomIndex = Math.floor(Math.random() * emojis.length);
             selectedEmojis.push(emojis[randomIndex], emojis[randomIndex]);
+            emojis.splice(randomIndex, 1);
         }
 
         // Add the joker to the selected emojis
