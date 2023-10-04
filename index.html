@@ -110,18 +110,11 @@
             setTimeout(function() {
                 const celebrationEmojis = ['🎉', '🎊', '🎈', '🥳'];
                 const cards = document.querySelectorAll('.card:not(.matched)');
-                const shuffledIndexes = shuffle([...Array(cards.length).keys()]);
-                let i = 0;
-                let intervalId = setInterval(function() {
-                    if (i < shuffledIndexes.length) {
-                        cards[shuffledIndexes[i]].dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
-                        cards[shuffledIndexes[i]].classList.add('flipped');
-                        i++;
-                    } else {
-                        clearInterval(intervalId);
-                        setTimeout(resetGame, 3000);
-                    }
-                }, 250);
+                cards.forEach(card => {
+                    card.dataset.emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+                    card.classList.add('flipped');
+                });
+                setTimeout(resetGame, 3000);
             }, 3000);
         }
 
@@ -134,6 +127,37 @@
             });
             startGame();
         }
+
+        // Function to start the game
+        function startGame() {
+            // Reset the game board
+            gameBoard.innerHTML = '';
+
+            // Randomly select 4 unique emojis from the emojis array and duplicate them
+            const selectedEmojis = [];
+            for (let i = 0; i < 4; i++) {
+                const randomIndex = Math.floor(Math.random() * emojis.length);
+                selectedEmojis.push(emojis[randomIndex], emojis[randomIndex]);
+                emojis.splice(randomIndex, 1);
+            }
+
+            // Add the joker to the selected emojis
+            selectedEmojis.push('🃏');
+
+            // Populate the game board with shuffled emojis and add event listeners
+            const shuffledEmojis = shuffle(selectedEmojis);
+            let flippedCards = [];
+            for (let i = 0; i < 9; i++) {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.dataset.emoji = shuffledEmojis[i];
+                card.addEventListener('click', flipCard);
+                gameBoard.appendChild(card);
+            }
+        }
+
+        // Start the game when the page loads
+        window.onload = startGame;
                     } else {
                         setTimeout(function() {
                             flippedCards[0].classList.remove('flipped');
