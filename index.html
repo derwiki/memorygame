@@ -184,6 +184,9 @@
             // Add the joker to the selected emojis
             selectedEmojis.push('🃏');
 
+            // Choose a random color for the game
+            const gameColor = colors[Math.floor(Math.random() * colors.length)];
+
             // Populate the game board with shuffled emojis and add event listeners
             const shuffledEmojis = shuffle(selectedEmojis);
             let flippedCards = [];
@@ -191,6 +194,7 @@
                 const card = document.createElement('div');
                 card.classList.add('card');
                 card.dataset.emoji = shuffledEmojis[i];
+                card.style.backgroundColor = gameColor; /* Apply the chosen color to all cards */
                 card.addEventListener('click', flipCard);
                 gameBoard.appendChild(card);
             }
