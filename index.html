@@ -25,8 +25,8 @@
         .card {
             width: 100px;
             height: 100px;
-            background: #FFD700; /* Change the background color to gold */
-            border: 2px solid #000; /* Add a black border */
+            background: #FFD700; /* This will be overridden by the JavaScript */
+            border: 5px solid white; /* Add a white stripe */
             border-radius: 15px; /* Add rounded edges */
             display: flex;
             justify-content: center;
@@ -91,6 +91,9 @@
         // Add the joker to the selected emojis
         selectedEmojis.push('🃏');
 
+        // Define an array of 8 toddler-friendly colors
+        const colors = ['#FFC0CB', '#FFD700', '#FFA500', '#ADFF2F', '#00FFFF', '#87CEEB', '#9370DB', '#FFB6C1'];
+
         // Populate the game board with shuffled emojis and add event listeners
         const gameBoard = document.getElementById('game-board');
         const shuffledEmojis = shuffle(selectedEmojis);
@@ -100,6 +103,7 @@
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
+            card.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; /* Choose a random color */
             function flipCard() {
                 if (window.isProcessing || this.classList.contains('flipped')) return;
                 this.classList.add('flipped');
