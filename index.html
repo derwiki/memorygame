@@ -218,6 +218,7 @@
         function hideMatchedCards() {
             const matchedCards = document.querySelectorAll('.card.matched');
             matchedCards.forEach(card => {
-                card.style.visibility = 'hidden';
+                card.style.backgroundColor = 'transparent';
+                card.style.border = 'none';
             });
         }
