@@ -94,6 +94,9 @@
         // Define an array of 8 toddler-friendly colors
         const colors = ['#FFC0CB', '#FFD700', '#FFA500', '#ADFF2F', '#00FFFF', '#87CEEB', '#9370DB', '#FFB6C1'];
 
+        // Choose a random color for the game
+        const gameColor = colors[Math.floor(Math.random() * colors.length)];
+
         // Populate the game board with shuffled emojis and add event listeners
         const gameBoard = document.getElementById('game-board');
         const shuffledEmojis = shuffle(selectedEmojis);
@@ -103,7 +106,7 @@
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
-            card.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]; /* Choose a random color */
+            card.style.backgroundColor = gameColor; /* Apply the chosen color to all cards */
             function flipCard() {
                 if (window.isProcessing || this.classList.contains('flipped')) return;
                 this.classList.add('flipped');
