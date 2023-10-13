@@ -96,7 +96,7 @@
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
             function flipCard() {
-                if (isProcessing) return;
+                if (isProcessing || this.classList.contains('flipped')) return;
                 this.classList.add('flipped');
                 flippedCards.push(this);
                 if (flippedCards.length === 2) {
