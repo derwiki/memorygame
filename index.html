@@ -220,5 +220,6 @@
             matchedCards.forEach(card => {
                 card.style.backgroundColor = 'transparent';
                 card.style.border = 'none';
+                card.removeEventListener('click', flipCard);
             });
         }
