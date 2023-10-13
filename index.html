@@ -23,8 +23,8 @@
             align-items: center;
         }
         .card {
-            width: 100px;
-            height: 100px;
+            width: 200px;
+            height: 200px;
             background: #FFD700; /* This will be overridden by the JavaScript */
             border: 5px solid white; /* Add a white stripe */
             border-radius: 15px; /* Add rounded edges */
@@ -38,6 +38,7 @@
         }
         .card::before {
             content: '?'; /* Display a ? emoji when the card is not flipped */
+            color: white;
         }
         .card.flipped::before, .card.matched::before {
             content: attr(data-emoji);
