@@ -25,7 +25,9 @@
         .card {
             width: 100px;
             height: 100px;
-            background: #ccc;
+            background: #FFD700; /* Change the background color to gold */
+            border: 2px solid #000; /* Add a black border */
+            border-radius: 15px; /* Add rounded edges */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,6 +35,9 @@
         }
         .card.flipped, .card.matched {
             background: #fff;
+        }
+        .card::before {
+            content: '?'; /* Display a ? emoji when the card is not flipped */
         }
         .card.flipped::before, .card.matched::before {
             content: attr(data-emoji);
