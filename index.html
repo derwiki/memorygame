@@ -101,8 +101,8 @@
                 flippedCards.push(this);
                 if (flippedCards.length === 2) {
                     window.isProcessing = true;
-                    const audio = new Audio('clapping.mp3');
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
+                        const audio = new Audio('clapping.mp3');
                         audio.play();
                         audio.onended = function() {
                             flippedCards[0].classList.add('matched');
@@ -201,19 +201,7 @@
             card.addEventListener('click', flipCard);
             gameBoard.appendChild(card);
         }
-    </script>
-    <script>
-        document.addEventListener('touchmove', function (event) {
-            if (event.scale !== 1) { event.preventDefault(); }
-        }, { passive: false });
-    </script>
-    <script>
-        document.addEventListener('touchmove', function (event) {
-            if (event.scale !== 1) { event.preventDefault(); }
-        }, { passive: false });
-    </script>
-</body>
-</html>
+
         // Function to hide matched cards
         function hideMatchedCards() {
             const matchedCards = document.querySelectorAll('.card.matched');
@@ -224,3 +212,10 @@
             });
             window.isProcessing = false;
         }
+
+        document.addEventListener('touchmove', function (event) {
+            if (event.scale !== 1) { event.preventDefault(); }
+        }, { passive: false });
+    </script>
+</body>
+</html>
