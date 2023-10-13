@@ -90,17 +90,17 @@
         const gameBoard = document.getElementById('game-board');
         const shuffledEmojis = shuffle(selectedEmojis);
         let flippedCards = [];
-        let isProcessing = false;
+        window.isProcessing = false;
         for (let i = 0; i < 9; i++) {
             const card = document.createElement('div');
             card.classList.add('card');
             card.dataset.emoji = shuffledEmojis[i];
             function flipCard() {
-                if (isProcessing || this.classList.contains('flipped')) return;
+                if (window.isProcessing || this.classList.contains('flipped')) return;
                 this.classList.add('flipped');
                 flippedCards.push(this);
                 if (flippedCards.length === 2) {
-                    isProcessing = true;
+                    window.isProcessing = true;
                     const audio = new Audio('clapping.mp3');
                     if (flippedCards[0].dataset.emoji === flippedCards[1].dataset.emoji) {
                         audio.play();
@@ -109,7 +109,7 @@
                             flippedCards[1].classList.add('matched');
                             hideMatchedCards();
                             flippedCards = [];
-                            isProcessing = false;
+                            window.isProcessing = false;
                             checkWin();
                         };
 
@@ -193,7 +193,7 @@
                             flippedCards[0].classList.remove('flipped', 'bounce');
                             flippedCards[1].classList.remove('flipped', 'bounce');
                             flippedCards = [];
-                            isProcessing = false;
+                            window.isProcessing = false;
                         }, 1000);
                     }
                 }
@@ -222,5 +222,5 @@
                 card.style.border = 'none';
                 card.removeEventListener('click', flipCard);
             });
-            isProcessing = false;
+            window.isProcessing = false;
         }
